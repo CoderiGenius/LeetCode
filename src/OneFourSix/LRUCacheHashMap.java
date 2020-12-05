@@ -1,6 +1,6 @@
 package OneFourSix;
 
-import java.util.HashMap;
+import java.util.*;
 
 class LRUCacheHashMap {
     HashMap<Integer,Node> data;
@@ -121,20 +121,29 @@ class LRUCacheHashMap {
 
 
     public static void main(String[] args) {
-        LRUCacheHashMap lruCacheHashMap = new LRUCacheHashMap(2);
-        System.out.println(lruCacheHashMap.get(2));
-        lruCacheHashMap.put(1, 1);
-        System.out.println("null");
-        lruCacheHashMap.put(2, 2);
-        System.out.println("null");
-        System.out.println(lruCacheHashMap.get(1));
-        lruCacheHashMap.put(3, 3);
-        System.out.println("null");
-        System.out.println(lruCacheHashMap.get(2));
-        lruCacheHashMap.put(4, 4);
-        System.out.println("null");
-        System.out.println(lruCacheHashMap.get(1));
-        System.out.println(lruCacheHashMap.get(3));
-        System.out.println(lruCacheHashMap.get(4));
+//        LRUCacheHashMap lruCacheHashMap = new LRUCacheHashMap(2);
+//        System.out.println(lruCacheHashMap.get(2));
+//        lruCacheHashMap.put(1, 1);
+//        System.out.println("null");
+//        lruCacheHashMap.put(2, 2);
+//        System.out.println("null");
+//        System.out.println(lruCacheHashMap.get(1));
+//        lruCacheHashMap.put(3, 3);
+//        System.out.println("null");
+//        System.out.println(lruCacheHashMap.get(2));
+//        lruCacheHashMap.put(4, 4);
+//        System.out.println("null");
+//        System.out.println(lruCacheHashMap.get(1));
+//        System.out.println(lruCacheHashMap.get(3));
+//        System.out.println(lruCacheHashMap.get(4));
+
+
+        //List<List<Integer>> totalList = new ArrayList<>();
+        Queue<Integer> list = new LinkedList<>();
+        list.add(null);
+        list.add(null);
+        list.remove(null);
+        //list.
+        //System.out.println(list);
     }
 }

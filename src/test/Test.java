@@ -21,10 +21,15 @@ public class Test {
 //        listNode2.next = listNode;
 //        System.out.println(temp.val);
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println(i);
-        }
+       Integer i = 0;
 
+        test(i);
+        System.out
+                .println(i);
+    }
+
+    private static void test(Integer i){
+        i = i + 1;
     }
 
     public ListNode reverseBetween(ListNode head, int m, int n) {

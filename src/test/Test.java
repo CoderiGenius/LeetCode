@@ -24,6 +24,7 @@ public class Test {
        Integer i = 0;
 
         test(i);
+       // Thread.interrupted()
         System.out
                 .println(i);
     }

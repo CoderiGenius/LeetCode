@@ -2,37 +2,47 @@ package NintyTwo;
 
 import domain.ListNode;
 
-import java.util.List;
-
-public class Solution {
+class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
 
-        if(head==null)return head;
-        ListNode before = null,nextNode;
-        int position = 1;
+       ListNode newH = head;
+      int i=1;
+      ListNode before = null;
+      ListNode a=null,b=null,c=null,d=null;
+      while (head!=null){
+          if(i==m-1)a=head;
+          if(i==n+1)d=head;
+          if(i>=m && i<=n){
+              if(i==m)b=head;
+              if(i==n)c=head;
+              ListNode temp = head.next;
+              head.next = before;
+              before = head;
+              head = temp;
 
-        ListNode a = null,b = null,c = null,d = null;
-
-        while(head!=null){
-            nextNode = head.next;
-            if(position==m-1)a=head;
-            if(position==n+1)d=head;
-            if(position>=(m) && position <= (n)){
-                if(position==m)b=head;
-                if(position==n)c=head;
-                head.next = before;
-            }
-           
-        before = head;
-        head = nextNode;
-        position++;
-        }
+              i++;
+              continue;
+          }
+        i++;
+      before = head;
+          head = head.next;
+      }
+      if(a==null)a=c;else
+      a.next = c;
         b.next = d;
-        a.next = c;
-return before;
+return newH;
     }
 
-    private void  recrusive(ListNode node){
+    private ListNode reverse(ListNode head,ListNode end){
+        ListNode pre = null;
+        ListNode next ;
 
+        while(head!=end.next){
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
     }
 }

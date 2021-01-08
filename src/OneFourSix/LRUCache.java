@@ -1,51 +1,126 @@
 package OneFourSix;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class LRUCache {
-    int[] data;
+class LRUCache {
+
+    Map<Integer,NodeLFU> map;
     int capacity;
-    List<Integer> list;
+    int length;
+    NodeLFU head;
+    NodeLFU tail;
+
     public LRUCache(int capacity) {
-        list = new LinkedList<>();
-        this.capacity = capacity;
-        data = new int[3001];
-        for(int i=0;i<3001;i++){
-            data[i] = -1;
-        }
+        this.capacity =capacity;
+        this.length = 0;
+        map = new HashMap<>();
     }
 
     public int get(int key) {
 
+        NodeLFU nodeLFU = map.get(key);
+        if(nodeLFU!=null){
 
-        if(data[key]==-1){
-            // System.out.println(list);
+            refresh(nodeLFU);
+            return nodeLFU.val;
+        }else {
             return -1;
-        }   else{
-            // System.out.println(list);
-            list.remove(new Integer(key));
-            list.add(key);
-            return  data[key];
         }
 
     }
 
     public void put(int key, int value) {
-        //System.out.println(list.size());
-        if(data[key]!=-1){
-            data[key] = value;
-            list.remove(new Integer(key));
-            list.add(key);
+
+        NodeLFU nodeLFU = map.get(key);
+        if(nodeLFU!=null){
+            nodeLFU.val = value;
+            refresh(nodeLFU);
             return;
         }
-        if(list.size()>=capacity){
 
-            data[list.get(0)] = -1;
-            list.remove(0);
-            //System.out.println(":"+list.size());
+        addToTail(key,value);
+
+    }
+
+    private void refresh(NodeLFU nodeLFU){
+        removeForRefresh(nodeLFU);
+        addToTailForRefresh(nodeLFU);
+    }
+
+    private void removeForRefresh(NodeLFU nodeLFU) {
+
+
+        if(nodeLFU==head){
+            head = head.next;
+        }else if(nodeLFU==tail){
+            tail = tail.pre;
+        }else {
+            nodeLFU.pre.next = nodeLFU.next;
+            nodeLFU.next.pre = nodeLFU.pre;
         }
-        data[key] = value;
-        list.add(key);
+
+    }
+
+    private void remove(NodeLFU nodeLFU) {
+        map.remove(nodeLFU.key);
+        length--;
+
+        if(nodeLFU==head){
+            head = head.next;
+        }else if(nodeLFU==tail){
+            tail = tail.pre;
+        }else {
+            nodeLFU.pre.next = nodeLFU.next;
+            nodeLFU.next.pre = nodeLFU.pre;
+        }
+
+    }
+    private void addToTail(int key,int value){
+        NodeLFU nodeLFU = new NodeLFU();
+        nodeLFU.key = key;
+        nodeLFU.val = value;
+        addToTail(nodeLFU);
+    }
+    private void addToTail(NodeLFU nodeLFU){
+
+        if(tail==null){
+            tail = nodeLFU;
+        }else {
+            tail.next = nodeLFU;
+            nodeLFU.pre = tail;
+            tail = nodeLFU;
+        }
+        if(head==null){
+            head  = tail;
+        }
+        map.put(nodeLFU.key,nodeLFU);
+
+        length++;
+        if(length>capacity){
+            remove(head);
+        }
+    }
+
+    private void addToTailForRefresh(NodeLFU nodeLFU){
+
+        if(tail==null){
+            tail = nodeLFU;
+        }else {
+            tail.next = nodeLFU;
+            nodeLFU.pre = tail;
+            tail = nodeLFU;
+        }
+        if(head==null){
+            head  = tail;
+        }
+
+    }
+
+    class NodeLFU{
+        int val;
+        int key;
+        NodeLFU pre;
+        NodeLFU next;
     }
 }

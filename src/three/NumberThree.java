@@ -76,7 +76,7 @@ public class NumberThree {
     public static void main(String[] args) {
 
         NumberThree numberThree = new NumberThree();
-        System.out.println(numberThree.lengthOfLongestSubstring(""));
+        System.out.println(numberThree.lengthOfLongestSubstring("abcabcbb"));
     }
 
 }

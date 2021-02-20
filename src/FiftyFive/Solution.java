@@ -10,12 +10,13 @@ import java.util.List;
 class Solution {
     public boolean canJump(int[] nums) {
 
-        if(nums.length==1){
-            return true;
+        int targetPosition = nums.length-1;
+        for (int i = nums.length-1; i >=0; i--) {
+            if(targetPosition<=(i+nums[i])){
+                targetPosition = i;
+            }
         }
-        int sum = 0;
-        return helper(0,nums,nums.length-1);
-
+    return targetPosition==0;
 
     }
 

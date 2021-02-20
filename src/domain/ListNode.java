@@ -24,4 +24,26 @@ public class ListNode {
     public void setNext(ListNode next) {
         this.next = next;
     }
+
+    @Override
+    public String toString() {
+//        return "ListNode{" +
+//                "val=" + val +
+//                '}';
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
+    }
+
+
+
+    //@Override
+    public String toStringAll() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
+    }
+
 }

@@ -16,8 +16,14 @@ public class TreeNode implements javax.swing.tree.TreeNode {
       }
 
 
-
-
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
 
     @Override
     public javax.swing.tree.TreeNode getChildAt(int childIndex) {

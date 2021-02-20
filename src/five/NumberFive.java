@@ -39,6 +39,7 @@ public class NumberFive {
                 longestStringLength = right - left;
                 longestString = s.substring(left+1,right);
             }
+            i = i+centerLength;
         }
         if("".equals(longestString)){
             return s.charAt(0)+"";
@@ -66,8 +67,49 @@ public class NumberFive {
         return i;
     }
 
+//    public String longestPalindrome(String s) {
+//
+//        if(s==null || s.length()<=1){
+//            return s;
+//        }
+//        String longest = "";
+//        for (int i = 0; i <s.length() ; i++) {
+//            String string = helper(i,s);
+//            if(longest.length()<string.length()){
+//                longest = string;
+//            }
+//        }
+//
+//        return longest;
+//
+//    }
+//
+//    private String helper(int index,String s){
+//        int init = index;
+//        int toRight = 0;
+//        int toLeft = 0;
+//        while((index+toRight)<s.length()-1 && s.charAt(index+toRight)==s.charAt(index+toRight+1)){
+//            toRight++;
+//        }
+//        while ((index-toLeft)>0 && s.charAt(index-toLeft)==s.charAt(index-toLeft-1)){
+//            toLeft++;
+//        }
+//
+//        while((index+toRight)<s.length()-1 && (index-toLeft)>0){
+//            if(s.charAt((index+toRight+1))==s.charAt(index-toLeft-1)){
+//                toLeft++;
+//                toRight++;
+//            }else break;
+//        }
+//
+//        return s.substring(init-toLeft,init+toRight+1);
+//
+//    }
+
+
+
     public static void main(String[] args) {
         NumberFive numberFive = new NumberFive();
-        System.out.println(numberFive.longestPalindrome("o"));
+        System.out.println(numberFive.longestPalindrome("cbbabd"));
     }
 }

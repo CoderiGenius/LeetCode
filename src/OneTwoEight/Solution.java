@@ -47,7 +47,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        //System.out.println(new Solution().longestConsecutive(new int[]{4,0,-4,-2,2,5,2,0,-8,-8,-8,-8,-1,7,4,5,5,-4,6,6,-3}));
+        //System.out.println(new SolutionOld().longestConsecutive(new int[]{4,0,-4,-2,2,5,2,0,-8,-8,-8,-8,-1,7,4,5,5,-4,6,6,-3}));
         System.out.println(new Solution().longestConsecutive(new int[]{100,200,1,2,3,4}));
 
     }

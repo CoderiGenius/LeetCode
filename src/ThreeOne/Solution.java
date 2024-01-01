@@ -55,6 +55,6 @@ public class Solution {
     public static void main(String[] args) {
         new Solution().nextPermutation(new int[]{1,3,2});
 
-       // System.out.println(Arrays.toString(new Solution().reverse(new int[]{1,2,3,4},0)));
+       // System.out.println(Arrays.toString(new SolutionOld().reverse(new int[]{1,2,3,4},0)));
     }
 }

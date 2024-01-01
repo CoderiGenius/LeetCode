@@ -111,9 +111,9 @@ public class SolutionWrong {
     }
 
     public static void main(String[] args) {
-        //System.out.println(new Solution().trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
+        //System.out.println(new SolutionOld().trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
         System.out.println(new SolutionWrong().trap(new int[]{1,6,1,6,1,3,8,8,3,4,9,6,3,2,8,5,7}));
-        //System.out.println(new Solution().trap(new int[]{9,6,8,8,5,6,3}));
+        //System.out.println(new SolutionOld().trap(new int[]{9,6,8,8,5,6,3}));
 
     }
 }

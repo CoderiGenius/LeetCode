@@ -2,72 +2,49 @@ package TwoThree;
 
 import domain.ListNode;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.List;
 
-public class Solution {
-
+/**
+ * @author CoderiGenius
+ * @version 2022/8/2 22:56
+ */
+class Solution {
+    ListNode[] listNodes = new ListNode[0];
     public ListNode mergeKLists(ListNode[] lists) {
 
-        if(lists==null || lists.length==0){
-            return null;
+        if(lists.length<1){
+            return new ListNode();
         }
-
-
-        return helper2(lists,0,lists.length-1);
-    }
-
-    private ListNode helper2(ListNode[] listNodes,int left,int right){
-        if(left==right)return listNodes[left];
-
-        if(left>right)return null;
-        int middle = (left+right)/2;
-       return helper(helper2(listNodes,left,middle),helper2(listNodes,middle+1,right));
-    }
-
-    private ListNode helper(ListNode a,ListNode b){
-
-        if(a==null){
-            return b;
+        if(lists.length==1){
+            return lists[0];
         }
+        listNodes = lists;
 
-        ListNode listNode = new ListNode();
-        ListNode newHead = listNode;
-
-        while (a!=null || b!=null){
-            if(a==null && b!=null){
-                listNode.next = b;
-
-                break;
-            }else if(a!=null && b==null){
-                listNode.next = a;
-
-                break;
-            }
-            else if(a.val< b.val){
-                listNode.next = a;
-                a = a.next;
-                listNode = listNode.next;
-            }else {
-                listNode.next = b;
-                b = b.next;
-                listNode = listNode.next;
-            }
+        ListNode newHead = new ListNode();
+        ListNode lastNode = newHead;
+        while (lastNode != null) {
+            lastNode.next = findTheSmallest();
+            lastNode = lastNode.next;
         }
         return newHead.next;
-    }
 
-    public static void main(String[] args) {
-        ListNode listNode = new ListNode();
-        ListNode listNode1 = new ListNode();
-        ListNode listNode2 = new ListNode();
-        listNode.val = 1;
-        listNode.next = listNode1;
-        listNode1.val = 4;
-        listNode1.next = listNode2;
-        listNode2.val = 5;
-        System.out.println(new Solution().mergeKLists(new ListNode[]{listNode}));
     }
+    private ListNode findTheSmallest(){
+        ListNode waitingNode = new ListNode(Integer.MAX_VALUE);
+        ListNode temp = waitingNode;
+        int position = 0;
+        for (int i = 0; i < listNodes.length; i++) {
+            if (listNodes[i] == null) {
+                continue;
+            }
+            if (waitingNode.val >= listNodes[i].val) {
+                waitingNode = listNodes[i];
+                position = i;
+            }
+        }
 
+        listNodes[position] = waitingNode.next;
+        waitingNode.next = null;
+        return waitingNode == temp ? null : waitingNode;
+    }
 }

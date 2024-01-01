@@ -2,7 +2,7 @@
 //
 //import java.util.*;
 //
-//class Solution {
+//class SolutionOld {
 //    public int findPairs(int[] nums, int k) {
 //
 //        if(nums.length==0 || nums.length==1){
@@ -50,7 +50,7 @@
 //
 //    public static void main(String[] args) {
 //        int[] nums = new int[]{6,2,9,3,9,6,7,7,6,4};
-//        Solution solution = new Solution();
+//        SolutionOld solution = new SolutionOld();
 //        System.out.println(solution.findPairs(nums,3));
 //
 //

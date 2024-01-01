@@ -48,7 +48,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-       // System.out.println(new Solution().minDistance("intention","execution"));
+       // System.out.println(new SolutionOld().minDistance("intention","execution"));
         System.out.println(new Solution().minDistance("horse","ros"));
 
     }

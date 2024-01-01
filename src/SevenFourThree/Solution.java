@@ -130,6 +130,6 @@ public class Solution {
 //        ints[0] = new int[]{1,2,1};
 //        ints[1] = new int[]{2,1,3};
 ////        ints[2] = new int[]{3,4,1};
-//        System.out.println(new Solution().networkDelayTime(ints,2,2));
+//        System.out.println(new SolutionOld().networkDelayTime(ints,2,2));
     }
 }
